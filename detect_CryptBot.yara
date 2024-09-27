@@ -4,6 +4,8 @@ rule detect_CryptBot {
         description = "Rule to detect CryptBot malware variants"
         author = "M4lcode (Mostafa ElSheimy)"
         date = "2024-09-27"
+	os = "windows"
+        category = "Malware"
 
     strings:
         $s1 = {C7 05 ?C ?? F? 00 01 00 00 00 E9 B1 FC FF FF 90 C7 05 ?C ?? F? 00 00 00 00 00 E9 A1 FC FF FF 90}
