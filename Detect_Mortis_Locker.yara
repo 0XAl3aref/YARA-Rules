@@ -13,5 +13,4 @@ rule Mortis_Locker {
         $s3 = ".Mortis" ascii
     condition:
         uint16(0) == 0x5A4D and 2 of them
-        or all of them
 }
