@@ -1,4 +1,3 @@
-import "pe"
 rule MAL_RANSOM_Rhysida {
     meta:
         description = "Detects Rhysida ransomware variants"
