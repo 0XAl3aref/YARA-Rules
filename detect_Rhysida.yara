@@ -82,8 +82,7 @@ rule MAL_RANSOM_Rhysida {
 
     condition:
         uint16(0) == 0x5A4D and
-	all of ($op*) and
-	$x1 and
-	pe.sections[0].raw_data_size < 0x50000 and
 	filesize < 2MB
+	all of ($op*) and
+	$x1
 }
