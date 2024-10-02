@@ -13,6 +13,5 @@ rule detect_Rhysida {
 
     condition:
         uint16(0) == 0x5A4D and
-	all of ($s*) and
-	pe.sections[0].raw_data_size > 50000
+	all of ($s*)
 }
