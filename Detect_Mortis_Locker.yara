@@ -1,4 +1,4 @@
-rule Mortis_Locker {
+rule MAL_RANSOM_Mortis_Locker {
     meta:
         description = "Detect Mortis Locker ransomware"
         author = "@M4lcode"
