@@ -3,7 +3,6 @@ rule MAL_RANSOM_Rhysida {
         description = "Detects Rhysida ransomware variants"
         author = "M4lcode (Mostafa ElSheimy)"
         date = "2024-10-02"
-        tags = "windows,exe,ransomware"
 	hash1 ="5b3a0b1b89ca463f56984cf67ea1719f1ddee770d1e14438e3fcf9b5301f2c83"
 	hash2 ="a0d4d52885b654cbfeefd194359936072133519c2bc7e8f68b7b668e59c67b94"
 	hash3 ="a40b815afce131df6d4bc3f389cb64b742f545481119d3ecb78dda22e546a41"
@@ -77,11 +76,12 @@ rule MAL_RANSOM_Rhysida {
 	// 55			PUSH RBP	
 	// 4889E5		MOV RBP, RSP	
 	// 488D0D15000000	LEA RCX, [RIP + 0X15]	
+
 	$x1 = "rhysida" nocase
 
     condition:
         uint16(0) == 0x5A4D and
 	filesize < 2MB
-	all of ($op*) and
-	$x1
+	$x1 and
+	all of ($op*)
 }
