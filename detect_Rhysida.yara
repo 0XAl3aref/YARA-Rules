@@ -77,13 +77,13 @@ rule MAL_RANSOM_Rhysida {
 	// 4889E5		MOV RBP, RSP	
 	// 488D0D15000000	LEA RCX, [RIP + 0X15]	
 
-	$x1 = "rhysida" nocase
+	$s1 = "rhysida" nocase
 
     condition:
         uint16(0) == 0x5A4D and
 	filesize < 2MB and
 	(
-	$x1 and
+	$s1 and
 	all of ($op*)
 	)
 }
