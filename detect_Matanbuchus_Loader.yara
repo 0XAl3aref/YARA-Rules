@@ -1,8 +1,8 @@
 import "pe"
-rule detect_Matanbuchus_Loader {
+rule MAL_Loader_Matanbuchus {
     meta:
-        description = "Rule to detect Matanbuchus Loader malware variants"
-        author = "M4lcode (Mostafa ElSheimy)"
+        description = "Detects Matanbuchus Loader variants"
+        author = "@M4lcode (Mostafa ElSheimy)"
         date = "2024-09-28"
 
     strings:
@@ -15,12 +15,9 @@ rule detect_Matanbuchus_Loader {
 	$s6 = {0F 84 A? 01 00 00 83 65 F0 00 33 C0 53 56 57 33 C9 8D 7D DC 53 0F A2 8B F3 5B}
 	$s7 = {8B 4D F4 64 89 0D 00 00 00 00 59 5F 5F 5E 5B 8B E5 5D 51 C3 50 64 FF 35 00 00 00 00 8D 44 24 0C}
 	$s8 = {C1 00 00 00 08 74 79 F7 C1 00 00 00 10 74 71 33 C9 0F 01 D0 89 45 EC 89 55 F0 8B 45 EC 8B 4D F0}
-
-
-
  
     condition:
         pe.characteristics & pe.DLL and
-	3 of ($s*) and
-	(pe.exports("DllInstall") or pe.exports("DllRegisterServer"))
+	(pe.exports("DllInstall") or pe.exports("DllRegisterServer")) and
+	3 of ($s*)
 }
