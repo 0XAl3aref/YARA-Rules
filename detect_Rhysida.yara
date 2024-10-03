@@ -82,6 +82,8 @@ rule MAL_RANSOM_Rhysida {
     condition:
         uint16(0) == 0x5A4D and
 	filesize < 2MB and
+	(
 	$x1 and
 	all of ($op*)
+	)
 }
