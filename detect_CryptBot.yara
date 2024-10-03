@@ -2,7 +2,7 @@ import "pe"
 rule MAL_Stealer_CryptBot {
     meta:
         description = "Rule to detect CryptBot malware variants"
-        author = "M4lcode (Mostafa ElSheimy)"
+        author = "@M4lcode (Mostafa ElSheimy)"
         date = "2024-09-27"
 	os = "windows"
         category = "Malware"
@@ -70,7 +70,7 @@ rule MAL_Stealer_CryptBot {
 
     condition:
         uint16(0) == 0x5A4D and
-	2 of ($s*) and
 	filesize < 7MB and
-	pe.sections[3].name == "/4"
+	pe.sections[3].name == "/4" and
+	2 of ($s*)
 }
