@@ -1,7 +1,7 @@
 rule MAL_RANSOM_Rhysida {
     meta:
         description = "Detects Rhysida ransomware variants"
-        author = "M4lcode (Mostafa ElSheimy)"
+        author = "@M4lcode (Mostafa ElSheimy)"
         date = "2024-10-02"
 	hash1 ="5b3a0b1b89ca463f56984cf67ea1719f1ddee770d1e14438e3fcf9b5301f2c83"
 	hash2 ="a0d4d52885b654cbfeefd194359936072133519c2bc7e8f68b7b668e59c67b94"
