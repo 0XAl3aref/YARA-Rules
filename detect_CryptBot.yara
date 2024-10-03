@@ -28,7 +28,7 @@ rule MAL_Stealer_CryptBot {
 	hash20="ffd998746e12ce104bfc905c9e37dd671b866717db084a7c0b4d1d6d8607ae52"
 
     strings:
-        $s1 = {C7 05 ?C ?? F? 00 01 00 00 00 E9 B1 FC FF FF 90 C7 05 ?C ?? F? 00 00 00 00 00 E9 A1 FC FF FF 90}
+        $op1 = {C7 05 ?C ?? F? 00 01 00 00 00 E9 B1 FC FF FF 90 C7 05 ?C ?? F? 00 00 00 00 00 E9 A1 FC FF FF 90}
 
 	// C705EC33F20001000000	MOV DWORD PTR [0XF233EC], 1	
 	// E9B1FCFFFF		JMP 0X401170	
@@ -37,7 +37,7 @@ rule MAL_Stealer_CryptBot {
 	// E9A1FCFFFF		JMP 0X401170	
 	// 90			NOP
 
-        $s2 = {55 89 E5 57 56 53 83 EC 1C C7 04 24 00 ?0 8? 00 FF 15 F0 ?1 F? 00 83 EC 04 85 C0 74 73 89 C3}
+        $op2 = {55 89 E5 57 56 53 83 EC 1C C7 04 24 00 ?0 8? 00 FF 15 F0 ?1 F? 00 83 EC 04 85 C0 74 73 89 C3}
 
 	// 55			PUSH EBP	
 	// 89E5			MOV EBP, ESP	
@@ -52,7 +52,7 @@ rule MAL_Stealer_CryptBot {
 	// 7473			JE 0X401580	
 	// 89C3			MOV EBX, EAX	
 
-        $s3 = {83 EC 1C 8B 44 24 20 89 04 24 E8 ?? ?? 4? 00 85 C0 0F 94 C0 83 C4 1C 0F B6 C0 F7 D8 C3 90 90 90}
+        $op3 = {83 EC 1C 8B 44 24 20 89 04 24 E8 ?? ?? 4? 00 85 C0 0F 94 C0 83 C4 1C 0F B6 C0 F7 D8 C3 90 90 90}
 	
 	// 83EC1C	SUB ESP, 0X1C	
 	// 8B442420	MOV EAX, DWORD PTR [ESP + 0X20]	
@@ -72,5 +72,5 @@ rule MAL_Stealer_CryptBot {
         uint16(0) == 0x5A4D and
 	filesize < 7MB and
 	pe.sections[3].name == "/4" and
-	2 of ($s*)
+	2 of ($op*)
 }
